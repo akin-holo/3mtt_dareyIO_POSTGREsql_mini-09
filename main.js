@@ -18,22 +18,20 @@ con.connect()
    .catch(err => console.error("Connection error", err.stack));
 
 
-// con.query(`
-//    CREATE TABLE users (
-//       id SERIAL PRIMARY KEY,
-//       name VARCHAR(100),
-//       email VARCHAR(100) UNIQUE NOT NULL,
-//       age INTEGER
-//    );
-//    `, (err, res ) => {
-//       if (err) {
-//          console.error("Error executing query", err.stack);
-//       } else {
-//          console.log("Table created successfully");
-//       }
-
-     
-// });
+con.query(`
+   CREATE TABLE users (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(100),
+      email VARCHAR(100) UNIQUE NOT NULL,
+      age INTEGER
+   );
+   `, (err, res ) => {
+      if (err) {
+         console.error("Error executing query", err.stack);
+      } else {
+         console.log("Table created successfully");
+      }
+});
 
 //GET `/users` - Get all users
 app.get('/users', (req, res) => {
@@ -142,4 +140,4 @@ app.delete('/users/:id', (req, res) => {
 
 app.listen(3000, () => {
    console.log(`Server running on port http://localhost:3000`);
-})
+});
