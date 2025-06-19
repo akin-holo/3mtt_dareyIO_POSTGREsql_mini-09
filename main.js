@@ -17,22 +17,6 @@ con.connect()
    .then(() => console.log("connected"))
    .catch(err => console.error("Connection error", err.stack));
 
-
-con.query(`
-   CREATE TABLE users (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(100),
-      email VARCHAR(100) UNIQUE NOT NULL,
-      age INTEGER
-   );
-   `, (err, res ) => {
-      if (err) {
-         console.error("Error executing query", err.stack);
-      } else {
-         console.log("Table created successfully");
-      }
-});
-
 //GET `/users` - Get all users
 app.get('/users', (req, res) => {
    const fetch_query = "SELECT * from users";
